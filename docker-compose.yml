@@ -1,0 +1,26 @@
+services:
+  whisper:
+    image: kingand/whisper-demo:latest
+    volumes:
+      - type: volume
+        source: whisper-models
+        target: /mnt/whisper-models
+        volume:
+          nocopy: true
+      - type: bind
+        source: $INPUT_DIR
+        target: /mnt/input-audio
+        read_only: true
+      - type: bind
+        source: $OUTPUT_DIR
+        target: /mnt/output-transcriptions
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    command: ["/opt/whisper-demo/bin/transcribe.sh", "medium", "True"]
+volumes:
+  whisper-models:

@@ -30,12 +30,12 @@ for more infromation.
     ```
 
 ## Run
-1. Create an `.env` file to specify the input and output directories
+1. Create an `.env` file next to `docker-compose.yml` to specify the input and output directories
     ```
     INPUT_DIR=/path/to/input/audio
     OUTPUT_DIR=/path/to/output/text
     ```
-2. Ensure the both the input and output directories exist on the host machine with the appropriate permissions for Docker to access.
+2. Ensure the both the input and output directories exist on the host machine with the appropriate permissions for Docker to access
 3. Start up the container(s) via Docker Compose
     ```
     docker compose up
